@@ -29,15 +29,15 @@ form {
     border-radius: 5px;
     padding: 5px;
 }
-#search:enabled, #search:focus, form:focus-visible {
+#searchBar:enabled, #searchBar:focus, form:focus-visible {
     outline: 0;
     border: 0;
 }
-#search {
+#searchBar {
     height: 100%;
 }
 
-main {
+#gridView {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
@@ -54,12 +54,21 @@ main {
     place-self: center;
 }
 
-.btn-container {
+#paginationButtons {
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
 }
-.nav-btn {
+#prevButton {
+    padding: 10px 20px;
+    border: 2px rgb(146, 41, 41) solid;
+    color: rgb(146, 41, 41);
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#nextButton {
     padding: 10px 20px;
     background-color: rgb(146, 41, 41);
     color: #fff;
@@ -67,6 +76,11 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-.nav-btn:hover {
-    background-color: rgba(255, 0, 0, 0.95);
+#prevButton:hover {
+    background-color: rgb(146, 41, 41);
+    color: #fff;
+}
+#nextButton:hover {
+    color: #fff;
+    background-color: rgba(255, 0, 0, 0.85);
 }

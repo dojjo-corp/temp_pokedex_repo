@@ -12,67 +12,21 @@
     <p class="main-title">Pokédex</p>
     <p class="sub-title">The Pokédex contains detailed stats for every creature from the Pokemon games.</p>
     <form action="">
-        <input type="text" name="search" id="search" placeholder="search fr Pokemons">
+        <input type="text" name="search" id="searchBar" placeholder="search for Pokemons">
         <input type="image" src="" alt="search-icon" id="search-icon">
     </form>
-    <main>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-        <div class="pokemon-container">
-            <img src="" alt="Pokemon-image">
-            <strong>name</strong>
-        </div>
-    </main>
-    <div class="btn-container">
-        <button class="nav-btn">Previous</button>
-        <button class="nav-btn">Next</button>
+    <div id="searchResults" style="display: none;"></div>
+    <div id="gridView"></div>
+    <div id="detailsView" style="display: none;">
+        <h2>Pokémon Details</h2>
+        <p>Name: <span id="detailName"></span></p>
+        <img id="detailImage" src="" alt="Pokemon Image">
     </div>
+    <div id="paginationButtons">
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
