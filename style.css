@@ -3,6 +3,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+:root {
+    --primary-color: rgb(146, 41, 41);
+    --secondary-color: rgb(195, 103, 103);
+}
 .main-title {
     font-size: 2rem;
     color: red;
@@ -36,29 +40,56 @@ form {
 #searchBar {
     height: 100%;
 }
+main {
+    width: 100%;
+    position: relative;
+}
 
-#gridView {
+#gridView, #searchResults {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     margin-top: 50px;
     width: 100%;
 }
-.pokemon-container {
+.pokemon {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.pokemon-container img {
+.pokemon img {
     width: 100px;
     place-self: center;
+}
+
+#detailsView {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    place-content: center;
+    position: fixed;
+    /* left: 20px; */
+    bottom: 60px;
+    border: 1px solid var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.767);
+    padding: 50px; 
+    border-radius: 5px;
+    width: 90%;
+    min-width: 300px;
+}
+#close-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #paginationButtons {
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 10px;
 }
 #prevButton {
     padding: 10px 20px;

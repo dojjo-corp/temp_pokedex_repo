@@ -6,6 +6,7 @@ const detailName = document.getElementById('detailName');
 const detailImage = document.getElementById('detailImage');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
+const closeBtn = document.getElementById('close-btn');
 
 let offset = 0;
 
@@ -24,8 +25,8 @@ async function displayPokemons() {
         pokemonDiv.classList.add('pokemon');
         // credit: chatgpt
         pokemonDiv.innerHTML = `
-          <h3>${pokemon.name}</h3>
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokemonIdFromUrl(pokemon.url)}.png" alt="${pokemon.name}">
+          <h3>${pokemon.name}</h3>
         `;
         pokemonDiv.addEventListener('click', () => displayPokemonDetails(pokemon));
         gridView.appendChild(pokemonDiv);
@@ -52,12 +53,12 @@ searchBar.addEventListener('input', async () => {
             searchResults.appendChild(resultItem);
         });
 
-        searchResults.style.display = 'block';
+        searchResults.style.display = 'grid';
         gridView.style.display = 'none';
         detailsView.style.display = 'none';
     } else {
         searchResults.style.display = 'none';
-        gridView.style.display = 'block';
+        gridView.style.display = 'grid';
     }
 });
 
@@ -86,6 +87,9 @@ function displayPokemonDetails(pokemon) {
     detailName.textContent = pokemon.name;
     detailImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokemonIdFromUrl(pokemon.url)}.png`;
     detailsView.style.display = 'block';
+    closeBtn.addEventListener('click', () => {
+        detailsView.style.display = 'none';
+    });
 }
 
 displayPokemons();

@@ -15,13 +15,16 @@
         <input type="text" name="search" id="searchBar" placeholder="search for Pokemons">
         <input type="image" src="" alt="search-icon" id="search-icon">
     </form>
-    <div id="searchResults" style="display: none;"></div>
-    <div id="gridView"></div>
-    <div id="detailsView" style="display: none;">
-        <h2>Pokémon Details</h2>
-        <p>Name: <span id="detailName"></span></p>
-        <img id="detailImage" src="" alt="Pokemon Image">
-    </div>
+    <main>
+        <div id="searchResults" style="display: none;"></div>
+        <div id="gridView"></div>
+        <div id="detailsView" style="display: none;">
+            <h2>Pokémon Details</h2>
+            <p>Name: <span id="detailName"></span></p>
+            <img id="detailImage" src="" alt="Pokemon Image">
+            <button id="close-btn">Close</button>
+        </div>
+    </main>
     <div id="paginationButtons">
         <button id="prevButton">Previous</button>
         <button id="nextButton">Next</button>
