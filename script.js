@@ -1,9 +1,11 @@
 const searchBar = document.getElementById('searchBar');
 const searchResults = document.getElementById('searchResults');
-const gridView = document.getElementById('gridView');
+const gridView = document.querySelector('.gridView');
+const detailsContainer = document.getElementById('details-container')
 const detailsView = document.getElementById('detailsView');
 const detailName = document.getElementById('detailName');
 const detailImage = document.getElementById('detailImage');
+const detailsMoves = document.querySelector('.moves');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const closeBtn = document.getElementById('close-btn');
@@ -14,6 +16,12 @@ async function fetchPokemons(offset = 0, limit = 20) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
     const data = await response.json();
     return data.results;
+}
+
+async function fetchPokemonDetail(pokemonUrl) {
+    const result = await fetch(pokemonUrl);
+    const data = await result.json();
+    return data;
 }
 
 async function displayPokemons() {
@@ -46,9 +54,12 @@ searchBar.addEventListener('input', async () => {
         matchingPokemons.forEach(pokemon => {
             const resultItem = document.createElement('div');
             const resultImg = document.createElement('img');
+            const resultName = document.createElement('h3');
+            resultName.innerText = pokemon.name;
             resultImg.setAttribute('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokemonIdFromUrl(pokemon.url)}.png`);
+            resultItem.className = 'pokemon';
             resultItem.appendChild(resultImg);
-            resultItem.textContent = pokemon.name;
+            resultItem.appendChild(resultName);
             resultItem.addEventListener('click', () => displayPokemonDetails(pokemon));
             searchResults.appendChild(resultItem);
         });
@@ -83,12 +94,22 @@ function getPokemonIdFromUrl(url) {
     return parts[parts.length - 2];
 }
 
-function displayPokemonDetails(pokemon) {
+async function displayPokemonDetails(pokemon) {
+    const pokemonData = await fetchPokemonDetail(pokemon.url);
+    const moves = pokemonData.moves;
     detailName.textContent = pokemon.name;
     detailImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokemonIdFromUrl(pokemon.url)}.png`;
-    detailsView.style.display = 'block';
+
+    // display moves
+    moves.forEach(move => {
+        const moveContainer = document.createElement('div'); 
+        moveContainer.innerText = move.move.name
+        detailsMoves.appendChild(moveContainer);
+    });
+
+    detailsContainer.style.display = 'block';
     closeBtn.addEventListener('click', () => {
-        detailsView.style.display = 'none';
+        detailsContainer.style.display = 'none';
     });
 }
 

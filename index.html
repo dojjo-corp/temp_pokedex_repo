@@ -17,11 +17,18 @@
     </form>
     <main>
         <div id="searchResults" style="display: none;"></div>
-        <div id="gridView"></div>
-        <div id="detailsView" style="display: none;">
+        <div class="gridView"></div>
+        <div id="details-container" style="display: none">
             <h2>Pokémon Details</h2>
-            <p>Name: <span id="detailName"></span></p>
-            <img id="detailImage" src="" alt="Pokemon Image">
+            <div id="detailsView">
+                
+                <p>Name: <span id="detailName"></span></p>
+                <img id="detailImage" src="" alt="Pokemon Image">
+                <hr>
+                <h3>Moves</h3>
+                <div class="gridView moves"></div>
+                
+            </div>
             <button id="close-btn">Close</button>
         </div>
     </main>
